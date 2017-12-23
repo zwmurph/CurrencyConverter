@@ -2,7 +2,7 @@
     <!--Page names-->
     <string name="app_name">Conversion Prototype</string>
     <string name="page_1">Converter</string>
-    <string name="page_2">Saved Conversions</string>
+    <!--<string name="page_2">Saved Conversions</string>-->
     <string name="page_3">Help &amp; About</string>
 
     <!--Content headings-->
@@ -25,10 +25,10 @@
 
     <!--Actions, button & prompt labels-->
     <string name="action_refresh">Update conversion rates</string>
-    <string name="action_navigate">Saved conversions</string>
+    <!--<string name="action_navigate">Saved conversions</string>-->
     <string name="action_help">Help &amp; about</string>
     <string name="button_convert">Convert</string>
-    <string name="button_saveConversion">Save Conversion</string>
+    <!--<string name="button_saveConversion">Save Conversion</string>-->
     <string name="prompt_amountEntry">Enter amount to convert</string>
 
     <!--Symbols for currencies-->
@@ -36,4 +36,8 @@
     <string name="symbol_EUR">€</string>
     <string name="symbol_USD">$</string>
     <string name="symbol_JPY">¥</string>
+
+    <!--Error messages-->
+    <string name="error_noConnectivity">No Internet connection.</string>
+    <string name="error_noDataResults">No exchange rates found.</string>
 </resources>

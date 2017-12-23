@@ -88,12 +88,12 @@ button at the bottom-->
     </LinearLayout>
 
     <!--Save the current conversion button-->
-    <Button
-        android:id="@+id/button_saveConversion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/button_saveConversion" />
+    <!--<Button-->
+        <!--android:id="@+id/button_saveConversion"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:text="@string/button_saveConversion" />-->
 </RelativeLayout>
