@@ -5,7 +5,14 @@ button at the bottom-->
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zacmurphy.currencyconverter.MainActivity">
+    tools:context="com.zacmurphy.currencyconverter.MainActivity"
+    android:id="@+id/mainLayout">
+
+    <!--<ListView-->
+        <!--android:id="@+id/list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical" />-->
 
     <!-- Empty view is only visible when the list has no items. -->
     <TextView
