@@ -1,0 +1,10 @@
+<!--This XML layout file controls the styling for the text once selected from the spinner-->
+<!--Using a TextView works fine for this XML file-->
+<!--Make sure that attribute 'id' is included-->
+<!--Everything else can be customised-->
+<!--Keep height to 'wrap_content' to keep the height defined by the background XML-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="14sp" />

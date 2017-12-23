@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This relative layout allows for the main functions to be at the top and the save conversion
+button at the bottom-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zacmurphy.currencyconverter.MainActivity">
+
+    <!--This linear layout structures the page contents in a vertical order-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <!--This linear layout structures the top line of contents in a horizontal order-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Label for the EditText-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/heading_baseCurrency" />
+
+            <!--The user input field-->
+            <EditText
+                android:id="@+id/amountToConvertEntryField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:hint="@string/prompt_amountEntry"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!--Label for the spinner-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/heading_currencyToConvert" />
+
+        <!--The spinner requires a frame, so that a style can be applied to it-->
+        <FrameLayout
+            android:id="@+id/spinnerBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_spinner">
+
+            <!--Drop-down box-->
+            <Spinner
+                android:id="@+id/currency_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <!--The convert button-->
+        <Button
+            android:id="@+id/button_convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/button_convert" />
+
+        <!--Heading for the amount converted text-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/heading_amountConverted" />
+
+        <!--Text-box that displays converted amount-->
+        <TextView
+            android:id="@+id/conversionResultField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/symbol_GBP" />
+    </LinearLayout>
+
+    <!--Save the current conversion button-->
+    <Button
+        android:id="@+id/button_saveConversion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_saveConversion" />
+</RelativeLayout>

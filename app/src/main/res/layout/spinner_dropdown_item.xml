@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This XML layout file controls the styling for the text inside the dropdown menu-->
+<!--Use a CheckedTextView for this XML file-->
+<!--Make sure that attributes 'id, style, ellipsize, maxLines' are all included-->
+<!--Everything else can be customised-->
+<!--48dp is the recommended height for a button/selection-->
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:ellipsize="marquee"
+    android:maxLines="1" />

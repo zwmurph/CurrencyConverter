@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">Currency Converter</string>
+    <!--Page names-->
+    <string name="app_name">Conversion Prototype</string>
+    <string name="page_1">Converter</string>
+    <string name="page_2">Saved Conversions</string>
+    <string name="page_3">Help &amp; About</string>
+
+    <!--Content headings-->
+    <string name="heading_currencyToConvert">Currency to convert to:</string>
+    <string name="heading_amountConverted">Amount:</string>
+    <string name="heading_aboutApp">About the app:</string>
+    <string name="heading_useOfApp">Directions for use:</string>
+    <string name="heading_baseCurrency">GBP £</string>
+
+    <!--Page content-->
+    <string name="content_aboutApp">[Content about the app, where the data comes from and how often the conversion rates are updated]</string>
+    <string name="content_directionsOfUse">[What the symbols on the action bar do, brief summary of how to use the app]</string>
+
+    <!--Array for the list of items in the spinner-->
+    <string-array name="array_currencies">
+        <item>European Euro</item>
+        <item>US Dollar</item>
+        <item>Japanese Yen</item>
+    </string-array>
+
+    <!--Actions, button & prompt labels-->
+    <string name="action_refresh">Update conversion rates</string>
+    <string name="action_navigate">Saved conversions</string>
+    <string name="action_help">Help &amp; about</string>
+    <string name="button_convert">Convert</string>
+    <string name="button_saveConversion">Save Conversion</string>
+    <string name="prompt_amountEntry">Enter amount to convert</string>
+
+    <!--Symbols for currencies-->
+    <string name="symbol_GBP">£</string>
+    <string name="symbol_EUR">€</string>
+    <string name="symbol_USD">$</string>
+    <string name="symbol_JPY">¥</string>
 </resources>

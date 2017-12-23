@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="8dp"
+        android:top="8dp">
+        <shape>
+            <!--Use this as the background colour of the Spinner-->
+            <solid android:color="@android:color/white" />
+
+            <!--This controls how rounded the corners are-->
+            <corners android:radius="2dp" />
+
+            <!--This creates the border width and colour-->
+            <stroke
+                android:width="1dp"
+                android:color="@color/divider" />
+
+            <!--Use this to control how large the box should be-->
+            <!--'Top/Bottom' control height, should be equal for text to be centered-->
+            <!--'Left' controls how far right the text is pushed-->
+            <!--'Right' controls how far left the arrow is pushed-->
+            <!--NOTE: with no right padding, the drop-arrow will resume default padding-->
+            <padding
+                android:bottom="16dp"
+                android:left="8dp"
+                android:right="8dp"
+                android:top="16dp" />
+        </shape>
+    </item>
+</layer-list>
