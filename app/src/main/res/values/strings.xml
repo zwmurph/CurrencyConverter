@@ -1,6 +1,6 @@
 <resources>
     <!--Page names-->
-    <string name="app_name">Conversion Prototype</string>
+    <string name="app_name">Currency Converter</string>
     <string name="page_1">Converter</string>
     <!--<string name="page_2">Saved Conversions</string>-->
     <string name="page_3">Help &amp; About</string>
@@ -37,7 +37,9 @@
     <string name="symbol_USD">$</string>
     <string name="symbol_JPY">¥</string>
 
-    <!--Error messages-->
+    <!--Error messages & notifications-->
     <string name="error_noConnectivity">No Internet connection.</string>
     <string name="error_noDataResults">No exchange rates found.</string>
+    <string name="message_loadingData">Loading data, please wait a moment.</string>
+    <string name="message_dataLoaded">Data successfully retrieved.</string>
 </resources>

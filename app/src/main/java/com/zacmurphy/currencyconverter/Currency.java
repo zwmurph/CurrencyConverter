@@ -1,5 +1,8 @@
 package com.zacmurphy.currencyconverter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The Currency class that creates and provides methods that return parts of the ArrayList when called
  * by other parts of the app
@@ -11,6 +14,7 @@ class Currency {
     private String mBase;
     private String mCurrencyKey;
     private double mCurrencyValue;
+    public static List<Currency> currenciesList = new ArrayList<>();
 
     /**
      * Create the constructor for this class, a constructor creates an instance of a class
@@ -27,6 +31,10 @@ class Currency {
         mCurrencyKey = currencyKey;
         mCurrencyValue = currencyValue;
     }
+
+//    public List getArrayList(){
+//        return currenciesList;
+//    }
 
     /**
      * @return the date that is associated with the results

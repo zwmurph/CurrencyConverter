@@ -2,6 +2,7 @@ package com.zacmurphy.currencyconverter;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ class CurrencyLoader extends AsyncTaskLoader<List<Currency>> {
     public CurrencyLoader(Context context) {
         super(context);
         mUrl = MainActivity.REQUEST_URL;
+        Log.d(LOG_TAG, "constructor - called");
     }
 
     /**
@@ -31,6 +33,7 @@ class CurrencyLoader extends AsyncTaskLoader<List<Currency>> {
     protected void onStartLoading() {
         //Force the load
         forceLoad();
+        Log.d(LOG_TAG, "onStartLoading - called");
     }
 
     /**
@@ -38,8 +41,10 @@ class CurrencyLoader extends AsyncTaskLoader<List<Currency>> {
      */
     @Override
     public List<Currency> loadInBackground() {
+        Log.d(LOG_TAG, "loadInBackground - called");
         //Don't perform the request if there are no URLs, or the URL is null
         if (mUrl == null) {
+            Log.v(LOG_TAG, "mUrl is null");
             return null;
         }
 

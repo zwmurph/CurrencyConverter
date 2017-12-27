@@ -3,6 +3,7 @@ package com.zacmurphy.currencyconverter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,14 +17,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Tag for the log messages
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     //URL that retrieves the JSON response from the API
     public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         //Set the title of the title bar to be more appropriate
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Do this when the button is clicked
-//                Log.i("TEST MESSAGE:", "Convert button click was registered");
+//                Log.d("TEST MESSAGE:", "Convert button click was registered");
                 onConvertClick();
             }
         });
@@ -52,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
      * Custom method that handles what happens when the convert button is clicked
      */
     private void onConvertClick() {
+        Log.d("TEST MESSAGE:", "onConvertClick was called");
         //Get the value of the current spinner option
-//        Log.i("TEST MESSAGE:", "onConvertClick was called");
         String currentSpinnerOption = getSpinnerOption();
         //Get the relevant symbol for the currency
         String relevantCurrencySymbol = getCurrencySymbol(currentSpinnerOption);
