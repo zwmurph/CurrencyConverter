@@ -40,6 +40,7 @@
     <!--Error messages & notifications-->
     <string name="error_noConnectivity">No Internet connection.</string>
     <string name="error_noDataResults">No exchange rates found.</string>
+    <string name="error_dataLoading">An error occurred while loading the data - please try again later.</string>
     <string name="message_loadingData">Loading data, please wait a moment.</string>
     <string name="message_dataLoaded">Data successfully retrieved.</string>
 </resources>

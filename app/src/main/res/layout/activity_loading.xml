@@ -16,12 +16,13 @@
     <!--TextView to display information to the user-->
     <TextView
         android:id="@+id/info_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/loading_spinner"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
         android:text="@string/message_loadingData"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textAlignment="center"/>
 </RelativeLayout>

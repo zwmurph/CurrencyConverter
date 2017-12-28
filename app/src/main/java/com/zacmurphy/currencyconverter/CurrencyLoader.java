@@ -22,7 +22,7 @@ class CurrencyLoader extends AsyncTaskLoader<List<Currency>> {
      */
     public CurrencyLoader(Context context) {
         super(context);
-        mUrl = MainActivity.REQUEST_URL;
+        mUrl = LoadingActivity.REQUEST_URL;
         Log.d(LOG_TAG, "constructor - called");
     }
 

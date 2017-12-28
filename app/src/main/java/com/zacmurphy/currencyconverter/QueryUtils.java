@@ -25,11 +25,16 @@ class QueryUtils {
     //Tag for the log messages
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
+    public static boolean ERROR_OCCURRED;
+
     /**
      * Query Fixer.IO and return an {@link List<Currency>} object to represent a single exchange rate.
      */
     public static List<Currency> fetchCurrencyData(String requestUrl) {
         Log.d(LOG_TAG, "fetchCurrencyData - called");
+        //Set the variable to false, until an error occurs and it is set to true
+        ERROR_OCCURRED = false;
+
         //Create a URL object
         URL url = createUrl(requestUrl);
         Log.v(LOG_TAG, "url: " + url);
@@ -42,6 +47,7 @@ class QueryUtils {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
+            ERROR_OCCURRED = true;
             //Log the error
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
@@ -62,6 +68,7 @@ class QueryUtils {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
+            ERROR_OCCURRED = true;
             //Log the error
             Log.e(LOG_TAG, "Error with creating URL", e);
         }
@@ -83,6 +90,7 @@ class QueryUtils {
         Log.d(LOG_TAG, "before if statement");
         //If the URL is null, then return early with an empty string
         if (url == null) {
+            ERROR_OCCURRED = true;
             Log.v(LOG_TAG, "URL is null");
             return jsonResponse;
         }
@@ -119,10 +127,12 @@ class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
                 Log.v(LOG_TAG, "jsonResponse: " + jsonResponse);
             } else {
+                ERROR_OCCURRED = true;
                 //Log the error
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
+            ERROR_OCCURRED = true;
             //Log the error
             Log.e(LOG_TAG, "Problem retrieving the JSON results", e);
         } finally {
@@ -186,6 +196,7 @@ class QueryUtils {
         Log.d(LOG_TAG, "extractFeaturesFromJson - called");
         //If the JSON String is empty or null, then return early
         if (TextUtils.isEmpty(jsonResponse)) {
+            ERROR_OCCURRED = true;
             Log.v(LOG_TAG, "JSON string is empty");
             return null;
         }
@@ -226,6 +237,7 @@ class QueryUtils {
                 currencies.add(new Currency(exchangeDate, baseCurrency, objectKey, keyValue));
             }
         } catch (JSONException e) {
+            ERROR_OCCURRED = true;
             //Log the error
             Log.e(LOG_TAG, "Problems parsing the currency JSON results", e);
         }

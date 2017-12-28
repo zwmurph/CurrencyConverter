@@ -1,5 +1,7 @@
 package com.zacmurphy.currencyconverter;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,9 @@ import java.util.List;
  * by other parts of the app
  */
 class Currency {
+
+    //Tag for the log messages
+    private static final String LOG_TAG = Currency.class.getSimpleName();
 
     //Declare private variables
     private String mDate;
@@ -26,15 +31,12 @@ class Currency {
      * @param currencyValue
      */
     public Currency(String date, String base, String currencyKey, double currencyValue) {
+        Log.d(LOG_TAG, "Constructor - called");
         mDate = date;
         mBase = base;
         mCurrencyKey = currencyKey;
         mCurrencyValue = currencyValue;
     }
-
-//    public List getArrayList(){
-//        return currenciesList;
-//    }
 
     /**
      * @return the date that is associated with the results

@@ -24,6 +24,7 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
 
     //URL that retrieves the JSON response from the API
     public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
+    //https://api.fixer.io/latest?base=GBP
 
     //Global instance of the ProgressBar, so it can be used in multiple methods in this class
     private ProgressBar mProgressBar;
@@ -119,7 +120,14 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
 
         //Remove the loading spinner and change the on-screen text
         mProgressBar.setVisibility(View.GONE);
-        mInfoView.setText(getResources().getText(R.string.message_dataLoaded));
+        Log.d(LOG_TAG, "Error occurred?: " + QueryUtils.ERROR_OCCURRED);
+        if (QueryUtils.ERROR_OCCURRED) {
+            mInfoView.setText(getResources().getText(R.string.error_dataLoading));
+        } else {
+            mInfoView.setText(getResources().getText(R.string.message_dataLoaded));
+        }
+
+        //Switch to the next activity
         switchActivity();
     }
 
@@ -128,9 +136,9 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
         Log.v(LOG_TAG, "" + currenciesList.size());
         for (int i = 0; i < currenciesList.size(); i++) {
             Log.v(LOG_TAG, "" +
-                    currenciesList.get(i).getBaseCurrency() + " " +
-                    currenciesList.get(i).getConvertedCurrency() + " " +
-                    currenciesList.get(i).getDateOfExchange() + " " +
+                    currenciesList.get(i).getBaseCurrency() + ", " +
+                    currenciesList.get(i).getConvertedCurrency() + ", " +
+                    currenciesList.get(i).getDateOfExchange() + ", " +
                     currenciesList.get(i).getExchangeRate()
             );
         }

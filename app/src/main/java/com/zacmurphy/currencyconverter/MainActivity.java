@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     //Tag for the log messages
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    //URL that retrieves the JSON response from the API
-    public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
