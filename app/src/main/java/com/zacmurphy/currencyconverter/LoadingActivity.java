@@ -2,6 +2,7 @@ package com.zacmurphy.currencyconverter;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -125,23 +126,24 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
             mInfoView.setText(getResources().getText(R.string.error_dataLoading));
         } else {
             mInfoView.setText(getResources().getText(R.string.message_dataLoaded));
+            //Switch to the next activity
+            switchActivity();
         }
-
-        //Switch to the next activity
-        switchActivity();
     }
 
+    /**
+     * Custom method that switches the user to the next activity and closes the main
+     */
     private void switchActivity() {
-        //TODO: This is shows how to obtain data from the ArrayList
-        Log.v(LOG_TAG, "" + currenciesList.size());
-        for (int i = 0; i < currenciesList.size(); i++) {
-            Log.v(LOG_TAG, "" +
-                    currenciesList.get(i).getBaseCurrency() + ", " +
-                    currenciesList.get(i).getConvertedCurrency() + ", " +
-                    currenciesList.get(i).getDateOfExchange() + ", " +
-                    currenciesList.get(i).getExchangeRate()
-            );
-        }
+        Log.d(LOG_TAG, "Activity switching");
+        //Create a new Intent object constructor, populate it with MainActivity.class
+        Intent intent = new Intent(this, MainActivity.class);
+        //Make sure the user cannot navigate back to this activity by using the back button
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //Start that new intent
+        startActivity(intent);
+        //Close the current activity
+        finish();
     }
 
     /**
