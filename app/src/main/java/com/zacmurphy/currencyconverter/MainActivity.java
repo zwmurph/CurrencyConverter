@@ -15,15 +15,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static com.zacmurphy.currencyconverter.R.id.amountToConvertEntryField;
+
 public class MainActivity extends AppCompatActivity {
 
     //Tag for the log messages
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    //Global instance of the Spinner, so it can be used in multiple methods in this class
+    private Spinner mSpinner;
+
+    //Global instance of the EditText, so it can be used in multiple methods in this class
+    private EditText mAmountToConvertEntryField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialise global variables
+        mSpinner = (Spinner) findViewById(R.id.currency_picker);
+        mAmountToConvertEntryField = (EditText) findViewById(amountToConvertEntryField);
 
         //Set the title of the title bar to be more appropriate
         setTitle(getResources().getText(R.string.page_1));
@@ -32,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         createSpinnerOptions();
 
         //Get the spinner as an object and call the OnItemSelectedListener on it to create the listener
-        Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
-        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        mSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
         //Create a new button object constructor
         Button button = (Button) findViewById(R.id.button_convert);
@@ -45,6 +56,37 @@ public class MainActivity extends AppCompatActivity {
                 onConvertClick();
             }
         });
+    }
+
+    /**
+     * The method that creates the spinner options
+     */
+    public void createSpinnerOptions() {
+        //Create the spinner as an object
+        //Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
+
+        // Create an ArrayAdapter using the the array of options and the style of the text before selection layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_currencies, R.layout.spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        mSpinner.setAdapter(adapter);
+    }
+
+    /**
+     * This sub-class controls what happens when the listener detects something has been selected
+     */
+    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            //When an item is selected, do this:
+            onConvertClick();
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+            // Do nothing when nothing is selected.
+        }
     }
 
     /**
@@ -69,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
     private String getSpinnerOption() {
 //        Log.i("TEST MESSAGE:", "getSpinnerOption was called");
         //Create a spinner object constructor
-        Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
+        //Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
         //Get the current item that is selected in the spinner
 //        Log.i("TEST MESSAGE:", "Value to return: " + spinner.getSelectedItem().toString());
-        return spinner.getSelectedItem().toString();
+        return mSpinner.getSelectedItem().toString();
     }
 
     /**
@@ -112,9 +154,9 @@ public class MainActivity extends AppCompatActivity {
         TextView conversionResultField = (TextView) findViewById(R.id.conversionResultField);
 
         //Create an object constructor for the EditText
-        EditText amountToConvertEntryField = (EditText) findViewById(R.id.amountToConvertEntryField);
+        //EditText amountToConvertEntryField = (EditText) findViewById(R.id.amountToConvertEntryField);
         //Get the values from the EditText
-        String userEnteredQuantity = amountToConvertEntryField.getText().toString();
+        String userEnteredQuantity = mAmountToConvertEntryField.getText().toString();
 
         //TODO: implement proper calculations into where the text-field is changed
         //Set the text-field text
@@ -177,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
      * Method that navigates the user to the help page, using an intent
      */
     private void changeToHelpPage() {
-        //Create a new Intent object constructor, populate it with ThirdActivity.class
+        //Create a new Intent object constructor, populate it with HelpActivity.class
         Intent intent = new Intent(this, HelpActivity.class);
         //Start that new intent
         startActivity(intent);
@@ -188,49 +230,18 @@ public class MainActivity extends AppCompatActivity {
      */
     private void refreshApp() {
         //Create an object constructor for the EditText
-        EditText amountToConvertEntryField = (EditText) findViewById(R.id.amountToConvertEntryField);
+        //EditText amountToConvertEntryField = (EditText) findViewById(amountToConvertEntryField);
         //Set the field to be empty
-        amountToConvertEntryField.setText(null);
+        mAmountToConvertEntryField.setText(null);
 
         //Create a spinner object constructor
-        Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
+        //Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
         //Reset the value to Euro (default)
-        spinner.setSelection(0);
+        mSpinner.setSelection(0);
 
         //Reset the values in the results field
         setResultFieldText(getResources().getString(R.string.symbol_EUR));
 
         //TODO: Implement refreshing of conversion rates
-    }
-
-    /**
-     * The method that creates the spinner options
-     */
-    public void createSpinnerOptions() {
-        //Create the spinner as an object
-        Spinner spinner = (Spinner) findViewById(R.id.currency_picker);
-
-        // Create an ArrayAdapter using the the array of options and the style of the text before selection layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_currencies, R.layout.spinner_item);
-
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-    }
-
-    /**
-     * This sub-class controls what happens when the listener detects something has been selected
-     */
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            //When an item is selected, do this:
-            onConvertClick();
-        }
-
-        public void onNothingSelected(AdapterView parent) {
-            // Do nothing when nothing is selected.
-        }
     }
 }
