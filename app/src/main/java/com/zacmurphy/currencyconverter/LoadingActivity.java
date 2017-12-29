@@ -23,7 +23,7 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     private static final String LOG_TAG = LoadingActivity.class.getSimpleName();
 
     //URL that retrieves the JSON response from the API
-    public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
+    public static final String REQUEST_URL = "https://api.fixer.io/latest?symbols=USD,GBP";
     //https://api.fixer.io/latest?base=GBP
 
     //Global instance of the ProgressBar, so it can be used in multiple methods in this class
