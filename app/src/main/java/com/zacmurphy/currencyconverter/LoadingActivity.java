@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.zacmurphy.currencyconverter.Currency.currenciesList;
@@ -36,9 +35,6 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     //Constant value for the currency loader ID. This is only really used if you're using multiple loaders.
     private static final int CURRENCY_LOADER_ID = 1;
 
-    //Global instance of the CurrencyAdapter, so it can be used in multiple methods in this class
-    private CurrencyAdapter mAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(LOG_TAG, "LoadingActivity - started");
@@ -59,9 +55,6 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
             mInfoView.setText(getResources().getText(R.string.error_noConnectivity));
         } else {
             Log.v(LOG_TAG, "Internet connection established");
-            //Creates an adapter for the words to use, appends the array of words to the adapter,
-            //the adapter is responsible for making a View for each item in the data set
-            mAdapter = new CurrencyAdapter(this, new ArrayList<Currency>());
 
             //Get a reference to the LoaderManager, in order to interact with loaders.
             LoaderManager loaderManager = getLoaderManager();
@@ -71,8 +64,6 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
             //because this activity implements the LoaderCallbacks interface).
             loaderManager.initLoader(CURRENCY_LOADER_ID, null, this);
         }
-        //mProgressBar.setVisibility(View.GONE);
-        //mInfoView.setText(getResources().getText(R.string.message_dataLoaded));
     }
 
     /**
@@ -111,12 +102,10 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoadFinished(Loader<List<Currency>> loader, List<Currency> currencies) {
         Log.d(LOG_TAG, "onLoadFinished() - called");
-        //If there is a valid list of Currency's, then add them to the adapter's dataset
-        //This triggers the ListView to update
+        //If there is a valid list of Currency's, then add them to the ArrayList
         if (currencies != null && !currencies.isEmpty()) {
-            mAdapter.addAll(currencies);
             currenciesList.addAll(currencies);
-            Log.v(LOG_TAG, "currencies added to adapter");
+            Log.v(LOG_TAG, "currencies added to ArrayList");
         }
 
         //Remove the loading spinner and change the on-screen text
@@ -153,8 +142,5 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(Loader<List<Currency>> loader) {
         Log.d(LOG_TAG, "onLoaderReset() - called");
-        //Loader reset, so we can clear out our existing data.
-        mAdapter.clear();
-        Log.v(LOG_TAG, "adapter cleared");
     }
 }

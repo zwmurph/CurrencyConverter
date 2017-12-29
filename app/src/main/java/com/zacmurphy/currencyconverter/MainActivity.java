@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static com.zacmurphy.currencyconverter.Currency.currenciesList;
 import static com.zacmurphy.currencyconverter.R.id.amountToConvertEntryField;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Do this when the button is clicked
-                Log.v("TEST MESSAGE:", "Convert button click was registered");
+                Log.v(LOG_TAG, "Convert button click was registered");
                 onConvertClick();
             }
         });
-        Log.v(LOG_TAG, "Listner set on convert button");
+        Log.v(LOG_TAG, "Listener set on convert button");
     }
 
     /**
@@ -65,11 +66,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void createSpinnerOptions() {
         Log.d(LOG_TAG, "createSpinnerOptions - called");
-        //Create an ArrayAdapter using the array of options and the style of the text before selection layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_currencies, R.layout.spinner_item);
-
-        //Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        //Create an ArrayAdapter based on the CurrencyAdapter using the list of currencies
+        ArrayAdapter adapter = new CurrencyAdapter(this, currenciesList);
 
         //Apply the adapter to the spinner
         mSpinner.setAdapter(adapter);

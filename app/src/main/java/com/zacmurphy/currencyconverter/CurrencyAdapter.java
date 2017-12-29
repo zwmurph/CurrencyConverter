@@ -1,8 +1,14 @@
 package com.zacmurphy.currencyconverter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -26,36 +32,46 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
         Log.d(LOG_TAG, "Constructor - called");
     }
 
-//    @Override
-//    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        return super.getDropDownView(position, convertView, parent);
-//    }
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Log.d(LOG_TAG, "getDropDownView - called");
+        //Get the data item for this position
+        Currency currentExchange = getItem(position);
 
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        Log.d(LOG_TAG, "getView() - called");
-//        //Get the data item for this position
-//        //Currency currentExchange = getItem(position);
-//
-////        //Check if an existing view is being reused, otherwise inflate the view
-////        if (convertView == null) {
-////            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, parent, false);
-////        }
-//
-//        //Lookup the views for the data population
-////        TextView dateView = convertView.findViewById(R.id.dateView);
-////        TextView baseCurrencyView = convertView.findViewById(R.id.baseCurrencyView);
-////        TextView exchangeCurrencyView = convertView.findViewById(R.id.exchangeCurrencyView);
-////        TextView exchangeCurrencyRateView = convertView.findViewById(R.id.exchangeCurrencyRateView);
-//
-//        //Populate data into the template view using the data object
-////        dateView.setText(currentExchange.getDateOfExchange());
-////        baseCurrencyView.setText(currentExchange.getBaseCurrency());
-////        exchangeCurrencyView.setText(currentExchange.getConvertedCurrency());
-////        exchangeCurrencyRateView.setText("" + currentExchange.getExchangeRate());
-//
-//        //Return the completed view to render on-screen
-//        return convertView;
-//    }
+        //Check if an existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.spinner_dropdown_item, parent, false);
+        }
+
+        //Get the TextView to populate from the layout
+        TextView item = convertView.findViewById(R.id.spinnerDropDownItem);
+
+        //Set the correct text to the TextView
+        item.setText(currentExchange.getConvertedCurrency());
+
+        //Return the completed view to render on-screen
+        return convertView;
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Log.d(LOG_TAG, "getView() - called");
+        //Get the data item for this position
+        Currency currentExchange = getItem(position);
+
+        //Check if an existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.spinner_item, parent, false);
+        }
+
+        //Get the TextView to populate from the layout
+        TextView item = convertView.findViewById(R.id.spinnerItem);
+
+        //Set the correct text to the TextView
+        item.setText(currentExchange.getConvertedCurrency());
+
+        //Return the completed view to render on-screen
+        return convertView;
+    }
 }
