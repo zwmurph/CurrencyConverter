@@ -4,10 +4,27 @@
 <!--Make sure that attributes 'id, style, ellipsize, maxLines' are all included-->
 <!--Everything else can be customised-->
 <!--48dp is the recommended height for a button/selection-->
-<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/spinnerDropDownItem"
-    style="?android:attr/spinnerDropDownItemStyle"
-    android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:ellipsize="marquee"
-    android:maxLines="1" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/spinnerDropDownImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        tools:background="@drawable/flag_GBP" />
+
+    <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/spinnerDropDownText"
+        style="?android:attr/spinnerDropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="0dp"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        tools:text="America" />
+</LinearLayout>

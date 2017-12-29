@@ -25,7 +25,8 @@ class QueryUtils {
     //Tag for the log messages
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
-    public static boolean ERROR_OCCURRED;
+    //Public Boolean for error detection during the data loading process
+    static boolean ERROR_OCCURRED;
 
     /**
      * Query Fixer.IO and return an {@link List<Currency>} object to represent a single exchange rate.
@@ -233,7 +234,7 @@ class QueryUtils {
                 Log.v(LOG_TAG, "keyValue: " + keyValue);
 
                 //Add those details along with the above date and base to the array
-                Log.d(LOG_TAG, exchangeDate + "-" + baseCurrency + "-" + objectKey + "-" + keyValue);
+                Log.d(LOG_TAG, exchangeDate + ", " + baseCurrency + ", " + objectKey + ", " + keyValue);
                 currencies.add(new Currency(exchangeDate, baseCurrency, objectKey, keyValue));
             }
         } catch (JSONException e) {
