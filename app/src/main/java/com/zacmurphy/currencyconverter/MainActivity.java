@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private String getSpinnerOption() {
         Log.d(LOG_TAG, "getSpinnerOption - called");
         //Get the current item that is selected in the spinner
-        Log.v(LOG_TAG, "Value to return: " + mSpinner.getSelectedItem().toString());
+        Log.v(LOG_TAG, "Spinner option selected: " + mSpinner.getSelectedItem().toString());
         return mSpinner.getSelectedItem().toString();
     }
 
@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
      * @return the relevant currency symbol associated with the country
      */
     private String getCurrencySymbol(String country) {
+        //TODO: Get this method working with existing code
+        //TODO: Then implement all currencies
         Log.d(LOG_TAG, "getCurrencySymbol - called");
         //Use switch statement to determine the correct symbol for the
         // currency and return it
@@ -245,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
         mSpinner.setSelection(0);
 
         //Reset the values in the results field
+        //TODO: Set a proper value, for when there is no data already input
         setResultFieldText(getResources().getString(R.string.symbol_EUR));
 
         //TODO: Implement refreshing of conversion rates

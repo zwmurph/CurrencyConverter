@@ -126,6 +126,7 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
         return getContext().getResources().getIdentifier("flag_" + countryCode.toLowerCase(), "drawable", getContext().getPackageName());
     }
 
+//    //TODO: Implement this method?:
 //    /**
 //     * @return the country name based on the {@param countryCode}
 //     */
