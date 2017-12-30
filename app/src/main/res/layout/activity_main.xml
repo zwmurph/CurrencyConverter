@@ -24,19 +24,27 @@ button at the bottom-->
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <!--Image label for the EditText-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/flag_gbp"
+                android:layout_gravity="center"/>
+
             <!--Label for the EditText-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="@string/heading_baseCurrency" />
+                android:text="@string/symbol_GBP"
+                android:layout_marginLeft="8dp"/>
 
             <!--The user input field-->
             <EditText
                 android:id="@+id/amountToConvertEntryField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="4dp"
                 android:hint="@string/prompt_amountEntry"
                 android:inputType="numberDecimal" />
         </LinearLayout>
