@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.zacmurphy.currencyconverter.Currency.currenciesList;
@@ -23,8 +25,9 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     private static final String LOG_TAG = LoadingActivity.class.getSimpleName();
 
     //URL that retrieves the JSON response from the API
-    public static final String REQUEST_URL = "https://api.fixer.io/latest?symbols=USD,GBP";
+    public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
     //https://api.fixer.io/latest?base=GBP
+    //https://api.fixer.io/latest?symbols=USD,GBP
 
     //Global instance of the ProgressBar, so it can be used in multiple methods in this class
     private ProgressBar mProgressBar;
@@ -106,6 +109,10 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
         if (currencies != null && !currencies.isEmpty()) {
             currenciesList.addAll(currencies);
             Log.v(LOG_TAG, "currencies added to ArrayList");
+
+            //Re-order the ArrayList, to prioritise the more frequently used currencies to the beginning
+            Collections.sort(currenciesList, new CurrencyComparator());
+            Log.v(LOG_TAG, "currenciesList re-ordered");
         }
 
         //Remove the loading spinner and change the on-screen text
@@ -133,6 +140,17 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
         startActivity(intent);
         //Close the current activity
         finish();
+    }
+
+    /**
+     * Sub-class that sorts the ArrayList into the order specified by the item's priority,
+     * when the items have the same priority, they are left in alphabetical order by country code
+     */
+    private class CurrencyComparator implements Comparator<Currency> {
+        public int compare(Currency left, Currency right){
+            Log.d(LOG_TAG, "compare class - called");
+            return Integer.compare(left.getPriority(), right.getPriority());
+        }
     }
 
     /**

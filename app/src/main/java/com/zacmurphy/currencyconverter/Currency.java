@@ -19,6 +19,7 @@ class Currency {
     private String mBase;
     private String mCurrencyKey;
     private double mCurrencyValue;
+    private int mPriority;
     public static List<Currency> currenciesList = new ArrayList<>();
 
     /**
@@ -30,12 +31,13 @@ class Currency {
      * @param currencyKey
      * @param currencyValue
      */
-    public Currency(String date, String base, String currencyKey, double currencyValue) {
+    public Currency(String date, String base, String currencyKey, double currencyValue, int priority) {
         Log.d(LOG_TAG, "Constructor - called");
         mDate = date;
         mBase = base;
         mCurrencyKey = currencyKey;
         mCurrencyValue = currencyValue;
+        mPriority = priority;
     }
 
     /**
@@ -64,5 +66,12 @@ class Currency {
      */
     public double getExchangeRate() {
         return mCurrencyValue;
+    }
+
+    /**
+     * @return the priority of the currency, determined in QueryUtils
+     */
+    public int getPriority() {
+        return mPriority;
     }
 }

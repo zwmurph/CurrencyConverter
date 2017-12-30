@@ -233,9 +233,12 @@ class QueryUtils {
                 double keyValue = rates.getDouble(objectKey);
                 Log.v(LOG_TAG, "keyValue: " + keyValue);
 
+                //Get the priority for each object
+                int priority = getPriority(objectKey);
+
                 //Add those details along with the above date and base to the array
-                Log.d(LOG_TAG, exchangeDate + ", " + baseCurrency + ", " + objectKey + ", " + keyValue);
-                currencies.add(new Currency(exchangeDate, baseCurrency, objectKey, keyValue));
+                Log.d(LOG_TAG, exchangeDate + ", " + baseCurrency + ", " + objectKey + ", " + keyValue + ", " + priority);
+                currencies.add(new Currency(exchangeDate, baseCurrency, objectKey, keyValue, priority));
             }
         } catch (JSONException e) {
             ERROR_OCCURRED = true;
@@ -243,5 +246,33 @@ class QueryUtils {
             Log.e(LOG_TAG, "Problems parsing the currency JSON results", e);
         }
         return currencies;
+    }
+
+    /**
+     * Custom method that assigns a priority to a currency based on how used it is worldwide,
+     * this I determined using data from the Internet
+     * @param currencyCode, the country to be checked
+     * @return the priority level
+     */
+    private static int getPriority(String currencyCode) {
+        Log.d(LOG_TAG, "getPriority - called");
+        switch (currencyCode){
+            case "USD":
+                return 0;
+            case "EUR":
+                return 1;
+            case "JPY":
+                return 2;
+            case "AUD":
+                return 3;
+            case "CAD":
+                return 4;
+            case "CHF":
+                return 5;
+            case "CNY":
+                return 6;
+            default:
+                return 10;
+        }
     }
 }
