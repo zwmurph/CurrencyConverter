@@ -25,7 +25,7 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     private static final String LOG_TAG = LoadingActivity.class.getSimpleName();
 
     //URL that retrieves the JSON response from the API
-    public static final String REQUEST_URL = "https://api.fixer.io/latest?symbols=USD,GBP";
+    public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
     //https://api.fixer.io/latest?base=GBP
     //https://api.fixer.io/latest?symbols=USD,GBP
 

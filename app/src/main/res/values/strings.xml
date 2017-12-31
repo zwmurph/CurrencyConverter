@@ -15,7 +15,7 @@
     <!--Page content-->
     <string name="content_aboutApp">[Content about the app, where the data comes from and how often the conversion rates are updated]</string>
     <string name="content_directionsOfUse">[What the symbols on the action bar do, brief summary of how to use the app]</string>
-    <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g><xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
+    <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g> <xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 
     <!--Actions, button & prompt labels-->
     <string name="action_refresh">Update conversion rates</string>
@@ -25,19 +25,44 @@
     <!--<string name="button_saveConversion">Save Conversion</string>-->
     <string name="prompt_amountEntry">Enter amount to convert</string>
 
-    <!--Symbols for currencies-->
-    <string name="symbol_USD">$</string>
-    <string name="symbol_EUR">€</string>
-    <string name="symbol_JPY">¥</string>
-    <string name="symbol_GBP">£</string>
-    <string name="symbol_AUD">$</string>
-    <string name="symbol_CAD">$</string>
-    <string name="symbol_CNY">¥</string>
-
     <!--Error messages & notifications-->
     <string name="error_noConnectivity">No Internet connection.</string>
     <string name="error_noDataResults">No exchange rates found.</string>
     <string name="error_dataLoading">An error occurred while loading the data - please try again later.</string>
     <string name="message_loadingData">Loading data, please wait a moment.</string>
     <string name="message_dataLoaded">Data successfully retrieved.</string>
+
+    <!--Symbols for currencies-->
+    <string name="symbol_AUD">$</string>
+    <string name="symbol_BGN">лв</string>
+    <string name="symbol_BRL">R$</string>
+    <string name="symbol_CAD">$</string>
+    <string name="symbol_CNY">¥</string>
+    <string name="symbol_CZK">Kč</string>
+    <string name="symbol_DKK">kr</string>
+    <string name="symbol_EUR">€</string>
+    <string name="symbol_GBP">£</string>
+    <string name="symbol_HKD">$</string>
+    <string name="symbol_HRK">kn</string>
+    <string name="symbol_HUF">Ft</string>
+    <string name="symbol_IDR">Rp</string>
+    <string name="symbol_ILS">₪</string>
+    <string name="symbol_INR">₹</string>
+    <string name="symbol_ISK">kr</string>
+    <string name="symbol_JPY">¥</string>
+    <string name="symbol_KRW">₩</string>
+    <string name="symbol_MXN">$</string>
+    <string name="symbol_MYR">RM</string>
+    <string name="symbol_NOK">kr</string>
+    <string name="symbol_NZD">$</string>
+    <string name="symbol_PHP">₱</string>
+    <string name="symbol_PLN">zł</string>
+    <string name="symbol_RON">lei</string>
+    <string name="symbol_RUB">₽</string>
+    <string name="symbol_SEK">kr</string>
+    <string name="symbol_SGD">$</string>
+    <string name="symbol_THB">฿</string>
+    <string name="symbol_TRY">₺</string>
+    <string name="symbol_USD">$</string>
+    <string name="symbol_ZAR">R</string>
 </resources>
