@@ -26,10 +26,10 @@ class Currency {
      * Create the constructor for this class, a constructor creates an instance of a class
      * This constructor will create an instance of two Strings and a double
      *
-     * @param date
-     * @param base
-     * @param currencyKey
-     * @param currencyValue
+     * @param date - the date the conversion rates are from
+     * @param base - the base currency
+     * @param currencyKey - the currency being converted to
+     * @param currencyValue - the exchange rate
      */
     public Currency(String date, String base, String currencyKey, double currencyValue, int priority) {
         Log.d(LOG_TAG, "Constructor - called");

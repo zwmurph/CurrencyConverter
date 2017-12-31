@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import static com.zacmurphy.currencyconverter.Currency.currenciesList;
 import static com.zacmurphy.currencyconverter.R.id.amountToConvertEntryField;
+import static com.zacmurphy.currencyconverter.R.id.conversionResultField;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     //Global instance of the EditText, so it can be used in multiple methods in this class
     private EditText mAmountToConvertEntryField;
 
+    //Global instance of the results field TextView, so it can be used in multiple methods in this class
+    private TextView mConversionResultField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         //Initialise global variables
         mSpinner = (Spinner) findViewById(R.id.currency_picker);
         mAmountToConvertEntryField = (EditText) findViewById(amountToConvertEntryField);
+        mConversionResultField = (TextView) findViewById(conversionResultField);
 
         //Set the title of the title bar to be more appropriate
         setTitle(getResources().getText(R.string.page_1));
@@ -58,7 +65,21 @@ public class MainActivity extends AppCompatActivity {
                 onConvertClick();
             }
         });
-        Log.v(LOG_TAG, "Listener set on convert button");
+        Log.v(LOG_TAG, "Listener set on 'Convert' button");
+
+        //Set a listener on the done button on the keyboard
+        mAmountToConvertEntryField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    //Run the calculations process
+                    Log.v(LOG_TAG, "Done button click was registered");
+                    onConvertClick();
+                }
+                return false;
+            }
+        });
+        Log.v(LOG_TAG, "Listener set on 'Done' button");
     }
 
     /**
@@ -74,98 +95,107 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This sub-class controls what happens when the listener detects something has been selected
-     */
-    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            Log.d(LOG_TAG, "Spinner item selected");
-            //When an item is selected, do this:
-            onConvertClick();
-        }
-
-        public void onNothingSelected(AdapterView parent) {
-            Log.d(LOG_TAG, "no spinner options selected");
-            // Do nothing when nothing is selected.
-        }
-    }
-
-    /**
      * Custom method that handles what happens when the convert button is clicked
      */
     private void onConvertClick() {
         Log.d(LOG_TAG, "onConvertClick - called");
-        //Get the value of the current spinner option
-        String currentSpinnerOption = getSpinnerOption();
+        //Get the country code of the currently selected spinner option
+        String currentCountryCode = getSpinnerOption();
+
         //Get the relevant symbol for the currency
-        String relevantCurrencySymbol = getCurrencySymbol(currentSpinnerOption);
+        String relevantCurrencySymbol = getCurrencySymbol(currentCountryCode);
+
+        //Perform the required calculations
+        double exchangedValue = getExchangedValue();
 
         //Change the text to display the correct values
-        setResultFieldText(relevantCurrencySymbol);
+        setResultFieldText(relevantCurrencySymbol, exchangedValue);
     }
 
     /**
      * Custom method
-     *
      * @return the currently selected option of the spinner
      */
     private String getSpinnerOption() {
         Log.d(LOG_TAG, "getSpinnerOption - called");
-        //Get the current item that is selected in the spinner
-        Log.v(LOG_TAG, "Spinner option selected: " + mSpinner.getSelectedItem().toString());
-        return mSpinner.getSelectedItem().toString();
+        //Get the currently selected item's position
+        int position = mSpinner.getSelectedItemPosition();
+
+        Log.v(LOG_TAG, "Selected item: " + currenciesList.get(position).getConvertedCurrency());
+        //Use that position to look up the respective item in the list and return the corresponding country code
+        return currenciesList.get(position).getConvertedCurrency();
     }
 
     /**
-     * Custom method
-     *
-     * @param country input of the country
-     * @return the relevant currency symbol associated with the country
+     * Custom method that takes in the {@param countryCode}
+     * @return the relevant currency symbol associated with the countryCode
      */
-    private String getCurrencySymbol(String country) {
-        //TODO: Get this method working with existing code
-        //TODO: Then implement all currencies
+    private String getCurrencySymbol(String countryCode) {
         Log.d(LOG_TAG, "getCurrencySymbol - called");
-        //Use switch statement to determine the correct symbol for the
-        // currency and return it
-        switch (country) {
-            //Euros
-            case "European Euro":
-                Log.v(LOG_TAG, "Value to return: " + getResources().getString(R.string.symbol_EUR));
-                return getResources().getString(R.string.symbol_EUR);
+        //Declare private variables
+        String symbol;
+        int symbolId;
 
-            //US Dollars
-            case "US Dollar":
-                Log.v(LOG_TAG, "Value to return: " + getResources().getString(R.string.symbol_USD));
-                return getResources().getString(R.string.symbol_USD);
+        //Append the country code to the prefix "symbol_" to get the string name, specify the resource type and package name - which give the string resource
+        symbolId = getApplicationContext().getResources().getIdentifier("symbol_" + countryCode, "string", getPackageName());
 
-            //Japanese Yen
-            case "Japanese Yen":
-                Log.v(LOG_TAG, "Value to return: " + getResources().getString(R.string.symbol_JPY));
-                return getResources().getString(R.string.symbol_JPY);
-
-            default:
-                Log.v(LOG_TAG, "Value to return: " + getResources().getString(R.string.symbol_GBP));
-                return getResources().getString(R.string.symbol_GBP);
+        //As long as there is an existing string resource available
+        if (symbolId != 0) {
+            //Get the resource
+            symbol = getResources().getString(symbolId);
+        } else {
+            //Assign the country code
+            symbol = countryCode;
         }
+
+        Log.v(LOG_TAG, "symbol: " + symbol);
+        return symbol;
+    }
+
+    /**
+     * Custom method, using the exchange rate and user entered value
+     * @return the exchanged value for the user
+     */
+    private double getExchangedValue() {
+        Log.d(LOG_TAG, "getExchangedValue - called");
+        //Get the values from the EditText
+        String userEnteredQuantity = mAmountToConvertEntryField.getText().toString();
+        Log.v(LOG_TAG, "userEnteredQuantity: " + userEnteredQuantity + "|END");
+
+        double valueToConvert;
+        //Check if the user input is blank
+        if (userEnteredQuantity.isEmpty()) {
+            valueToConvert = 0;
+        } else {
+            valueToConvert = Double.parseDouble(userEnteredQuantity);
+        }
+        Log.v(LOG_TAG, "valueToConvert: " + valueToConvert);
+
+        //Get the currently selected item's position
+        int position = mSpinner.getSelectedItemPosition();
+
+        //Get the exchange rate for the particular currency
+        double exchangeRate = currenciesList.get(position).getExchangeRate();
+        Log.v(LOG_TAG, "exchangeRate: " + exchangeRate);
+
+        Log.v(LOG_TAG, "exchangedValue: " + valueToConvert * exchangeRate);
+        return valueToConvert * exchangeRate;
     }
 
     /**
      * Custom method that outputs the result from the conversion
-     *
      * @param relevantCurrencySymbol input of the relevant currency symbol to use
+     * @param exchangedValue input of the exchanged value to show the user
      */
-    private void setResultFieldText(String relevantCurrencySymbol) {
+    private void setResultFieldText(String relevantCurrencySymbol, double exchangedValue) {
         Log.d(LOG_TAG, "setResultFieldText - called");
-        //Create an object constructor for the text-field that is changed
-        TextView conversionResultField = (TextView) findViewById(R.id.conversionResultField);
 
-        //Get the values from the EditText
-        String userEnteredQuantity = mAmountToConvertEntryField.getText().toString();
-        Log.v(LOG_TAG, "userEnteredQuantity: " + userEnteredQuantity);
-
-        //TODO: implement proper calculations into where the text-field is changed
-        //Set the text-field text
-        conversionResultField.setText(relevantCurrencySymbol + userEnteredQuantity);
+        //Set the text based on the value being input
+        if (exchangedValue == 0.0) {
+            mConversionResultField.setText(getCurrencySymbol(getSpinnerOption()));
+        } else {
+            mConversionResultField.setText(getString(R.string.content_convertedValueText, relevantCurrencySymbol, exchangedValue));
+        }
     }
 
     /**
@@ -214,16 +244,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    /**
-//     * Method that navigates the user to the second page, using an intent
-//     */
-//    private void changeToSavedConversions() {
-//        //Create a new Intent object constructor, populate it with SecondActivity.class
-//        Intent intent = new Intent(this, SecondActivity.class);
-//        //Start that new intent
-//        startActivity(intent);
-//    }
-
     /**
      * Method that navigates the user to the help page, using an intent
      */
@@ -235,21 +255,45 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    /**
+//     * Method that navigates the user to the second page, using an intent
+//     */
+//    private void changeToSavedConversions() {
+//        //Create a new Intent object constructor, populate it with SecondActivity.class
+//        Intent intent = new Intent(this, SecondActivity.class);
+//        //Start that new intent
+//        startActivity(intent);
+//    }
+
     /**
      * Custom method, refresh the conversion rates and reset the changed fields
      */
     private void refreshApp() {
         Log.d(LOG_TAG, "refreshApp - called");
+        //TODO: Implement refreshing of conversion rates
         //Set the EditText field to be empty
         mAmountToConvertEntryField.setText(null);
 
-        //Reset the Spinner value to Euro (default)
+        //Reset the Spinner value the default currency
         mSpinner.setSelection(0);
 
         //Reset the values in the results field
-        //TODO: Set a proper value, for when there is no data already input
-        setResultFieldText(getResources().getString(R.string.symbol_EUR));
+        mConversionResultField.setText(getCurrencySymbol(getSpinnerOption()));
+    }
 
-        //TODO: Implement refreshing of conversion rates
+    /**
+     * This sub-class controls what happens when the listener detects something has been selected
+     */
+    private class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            Log.d(LOG_TAG, "Spinner item selected");
+            //When an item is selected, do this:
+            onConvertClick();
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+            Log.d(LOG_TAG, "no spinner options selected");
+            // Do nothing when nothing is selected.
+        }
     }
 }

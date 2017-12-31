@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!--Page names-->
     <string name="app_name">Currency Converter</string>
     <string name="page_1">Converter</string>
@@ -15,13 +15,7 @@
     <!--Page content-->
     <string name="content_aboutApp">[Content about the app, where the data comes from and how often the conversion rates are updated]</string>
     <string name="content_directionsOfUse">[What the symbols on the action bar do, brief summary of how to use the app]</string>
-
-    <!--Array for the list of items in the spinner-->
-    <string-array name="array_currencies">
-        <item>European Euro</item>
-        <item>US Dollar</item>
-        <item>Japanese Yen</item>
-    </string-array>
+    <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g><xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 
     <!--Actions, button & prompt labels-->
     <string name="action_refresh">Update conversion rates</string>
@@ -32,10 +26,13 @@
     <string name="prompt_amountEntry">Enter amount to convert</string>
 
     <!--Symbols for currencies-->
-    <string name="symbol_GBP">£</string>
-    <string name="symbol_EUR">€</string>
     <string name="symbol_USD">$</string>
+    <string name="symbol_EUR">€</string>
     <string name="symbol_JPY">¥</string>
+    <string name="symbol_GBP">£</string>
+    <string name="symbol_AUD">$</string>
+    <string name="symbol_CAD">$</string>
+    <string name="symbol_CNY">¥</string>
 
     <!--Error messages & notifications-->
     <string name="error_noConnectivity">No Internet connection.</string>
