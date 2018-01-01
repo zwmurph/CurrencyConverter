@@ -44,6 +44,9 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
+        //Hide the system UI
+        hideSystemUI();
+
         //Initialise the global variables
         mProgressBar = (ProgressBar) findViewById(R.id.loading_spinner);
         mInfoView = (TextView) findViewById(R.id.info_view);
@@ -160,5 +163,22 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(Loader<List<Currency>> loader) {
         Log.d(LOG_TAG, "onLoaderReset() - called");
+    }
+
+    /**
+     * Method that hides all system UI, making the activity truly fullscreen
+     * Uses code sample from the Android Dev. documentation
+     */
+    private void hideSystemUI() {
+        // Set the IMMERSIVE flag.
+        // Set the content to appear under the system bars so that the content
+        // doesn't resize when the system bars hide and show.
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 }
