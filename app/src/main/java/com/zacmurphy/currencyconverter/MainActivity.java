@@ -1,6 +1,7 @@
 package com.zacmurphy.currencyconverter;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Set the title of the title bar to be more appropriate
         setTitle(getResources().getText(R.string.page_1));
+
+        //Set the typeface to the EditText
+        mAmountToConvertEntryField.setTypeface(Typeface.SANS_SERIF);
 
         //Call this method to initiate the creation of the Spinner
         createSpinnerOptions();

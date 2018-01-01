@@ -26,6 +26,7 @@
         android:layout_marginLeft="8dp"
         android:textSize="14sp"
         tools:text="GBP"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        style="@style/Content"/>
 
 </LinearLayout>

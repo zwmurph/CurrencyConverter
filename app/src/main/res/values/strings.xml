@@ -6,22 +6,22 @@
     <string name="page_3">Help &amp; About</string>
 
     <!--Content headings-->
-    <string name="heading_currencyToConvert">Currency to convert to:</string>
-    <string name="heading_amountConverted">Amount:</string>
-    <string name="heading_aboutApp">About the app:</string>
-    <string name="heading_useOfApp">Directions for use:</string>
+    <string name="heading_currencyToConvert">Currency to convert to</string>
+    <string name="heading_amountConverted">Amount</string>
+    <string name="heading_aboutApp">About the app</string>
+    <string name="heading_useOfApp">Directions for use</string>
     <string name="heading_baseCurrency">GBP £</string>
 
     <!--Page content-->
-    <string name="content_aboutApp">This currency converter app uses the latest exchange rates provided by the European Central Bank, which are updated at around 15:00 GMT every day, excluding weekends and select holidays throughout the year.\nCurrently, the app is using exchange rates from:</string>
-    <string name="content_directionsOfUse">To use the converter, simply tap on the user-entry field on the main page and enter an amount to convert in British Pounds.\nThen select a currency to convert to from the drop-down list and press the Convert button.\nTo reset the app ready for another conversion, select the Clear Results icon at the top, next to the help button.\nTo retrieve the latest exchange rates, go to the overflow menu and select Update Exchange Rates. </string>
+    <string name="content_aboutApp">This currency converter app uses the latest exchange rates provided by the European Central Bank, which are updated at around 15:00 GMT every day - excluding weekends and select holidays throughout the year.\nCurrently, the app is using exchange rates from:</string>
+    <string name="content_directionsOfUse">To use the converter, simply tap on the user-entry field on the main page and enter an amount to convert in British Pounds.\n\nThen select a currency to convert to from the drop-down list and press the Convert button.\n\nTo reset the app ready for another conversion, select the Clear Results icon at the top, next to the help button.\n\nTo retrieve the latest exchange rates, go to the overflow menu and select Update Exchange Rates. </string>
     <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g> <xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 
     <!--Actions, button & prompt labels-->
-    <string name="action_refresh">Update Exchange Rates</string>
+    <string name="action_refresh">Update exchange rates</string>
     <!--<string name="action_navigate">Saved conversions</string>-->
     <string name="action_help">Help &amp; about</string>
-    <string name="action_resetContent">Clear Results</string>
+    <string name="action_resetContent">Clear results</string>
     <string name="button_convert">Convert</string>
     <!--<string name="button_saveConversion">Save Conversion</string>-->
     <string name="prompt_amountEntry">Enter amount to convert</string>
@@ -29,7 +29,7 @@
     <!--Error messages & notifications-->
     <string name="error_noConnectivity">No Internet connection.</string>
     <string name="error_noDataResults">No exchange rates found.</string>
-    <string name="error_dataLoading">An error occurred while loading the data - please try again later.</string>
+    <string name="error_dataLoading">An error occurred - please try again later.</string>
     <string name="message_loadingData">Loading data, please wait a moment.</string>
     <string name="message_dataLoaded">Data successfully retrieved.</string>
 

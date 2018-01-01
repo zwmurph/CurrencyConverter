@@ -23,6 +23,6 @@
         android:layout_centerInParent="true"
         android:layout_margin="8dp"
         android:text="@string/message_loadingData"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        style="@style/Notification"/>
 </RelativeLayout>

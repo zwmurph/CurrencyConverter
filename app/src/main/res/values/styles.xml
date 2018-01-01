@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--Base application theme-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -8,12 +8,62 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Base application theme. -->
+    <!--Full screen theme-->
     <style name="FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--Colour for loading spinner-->
+        <item name="colorPrimary">@color/divider</item>
+        <item name="colorPrimaryDark">@color/secondaryText</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--Smaller Heading text style-->
+    <style name="HeadingSmall" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!--Larger Heading text style-->
+    <style name="HeadingLarge" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!--Content text style-->
+    <style name="Content" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <!--Large Content text style-->
+    <style name="ContentLarge" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">45sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <!--Notification text style-->
+    <style name="Notification" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!--Dropdown text style-->
+    <style name="Dropdown" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!--Button text style-->
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorLight</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

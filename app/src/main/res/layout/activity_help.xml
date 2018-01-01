@@ -22,25 +22,28 @@ scrolling capabilities if the contents overflow the screen.-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/heading_aboutApp" />
+            android:text="@string/heading_aboutApp"
+            style="@style/HeadingLarge"/>
 
         <!--First content-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/content_aboutApp"/>
+            android:text="@string/content_aboutApp"
+            style="@style/Content"/>
 
         <!--Date of exchange rates being used-->
         <TextView
             android:id="@+id/exchangeRateDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            style="@style/Content"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_marginTop="8dp"
             android:background="@color/divider" />
 
@@ -49,13 +52,15 @@ scrolling capabilities if the contents overflow the screen.-->
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/heading_useOfApp" />
+            android:text="@string/heading_useOfApp"
+            style="@style/HeadingLarge"/>
 
         <!--Second content-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/content_directionsOfUse" />
+            android:text="@string/content_directionsOfUse"
+            style="@style/Content"/>
     </LinearLayout>
 </ScrollView>
