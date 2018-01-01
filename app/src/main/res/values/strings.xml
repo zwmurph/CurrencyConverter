@@ -18,9 +18,10 @@
     <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g> <xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 
     <!--Actions, button & prompt labels-->
-    <string name="action_refresh">Update conversion rates</string>
+    <string name="action_refresh">Update Conversion Rates</string>
     <!--<string name="action_navigate">Saved conversions</string>-->
     <string name="action_help">Help &amp; about</string>
+    <string name="action_resetContent">Clear Results</string>
     <string name="button_convert">Convert</string>
     <!--<string name="button_saveConversion">Save Conversion</string>-->
     <string name="prompt_amountEntry">Enter amount to convert</string>

@@ -4,9 +4,9 @@
 
     <!--Refresh icon, retrieves latest conversion figures-->
     <item
-        android:id="@+id/action_refresh"
+        android:id="@+id/action_resetContent"
         android:icon="@drawable/ic_refresh_white_24dp"
-        android:title="@string/action_refresh"
+        android:title="@string/action_resetContent"
         app:showAsAction="ifRoom" />
 
     <!--"Saved Conversions" page navigation button, should appear as button if possible-->
@@ -22,4 +22,9 @@
         android:icon="@drawable/ic_help_white_24dp"
         android:title="@string/action_help"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:title="@string/action_refresh"
+        app:showAsAction="never"/>
 </menu>

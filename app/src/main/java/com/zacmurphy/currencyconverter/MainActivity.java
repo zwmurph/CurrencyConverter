@@ -242,10 +242,10 @@ public class MainActivity extends AppCompatActivity {
 //                return true;
 
             //When the refresh icon is selected:
-            case R.id.action_refresh:
-                Log.v(LOG_TAG, "Refresh the app");
+            case R.id.action_resetContent:
+                Log.v(LOG_TAG, "Reset the page contents");
                 //Refresh the app
-                refreshApp();
+                resetContent();
                 return true;
 
             //When the help icon is selected:
@@ -253,6 +253,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.v(LOG_TAG, "Nav to help");
                 //Open the help page
                 changeToHelpPage();
+                return true;
+
+            //When the refresh option is selected:
+            case R.id.action_refresh:
+                Log.v(LOG_TAG, "Update conversion rates");
+                //Refresh the conversion rates
+                refreshConversionRates();
                 return true;
 
             default:
@@ -283,11 +290,10 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     /**
-     * Custom method, refresh the conversion rates and reset the changed fields
+     * Custom method, reset the changed fields
      */
-    private void refreshApp() {
+    private void resetContent() {
         Log.d(LOG_TAG, "refreshApp - called");
-        //TODO: Implement refreshing of conversion rates
         //Set the EditText field to be empty
         mAmountToConvertEntryField.setText(null);
 
@@ -299,6 +305,24 @@ public class MainActivity extends AppCompatActivity {
 
         //Hide the cursor
         mAmountToConvertEntryField.setCursorVisible(false);
+    }
+
+    /**
+     * Custom method that refreshes the currency rates
+     */
+    private void refreshConversionRates() {
+        Log.d(LOG_TAG, "refreshConversionRates - called");
+        //Clear the existing currencies, so duplicates are not produced
+        currenciesList.clear();
+
+        //Create a new Intent object constructor, populate it with MainActivity.class
+        Intent intent = new Intent(this, LoadingActivity.class);
+        //Make sure the user cannot navigate back to this activity by using the back button
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //Start that new intent
+        startActivity(intent);
+        //Close the current activity
+        finish();
     }
 
     /**
