@@ -46,7 +46,8 @@ button at the bottom-->
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:hint="@string/prompt_amountEntry"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:cursorVisible="false"/>
         </LinearLayout>
 
         <!--Label for the spinner-->

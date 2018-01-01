@@ -67,6 +67,17 @@ public class MainActivity extends AppCompatActivity {
         });
         Log.v(LOG_TAG, "Listener set on 'Convert' button");
 
+        //Set a listener on the EditText
+        mAmountToConvertEntryField.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (v.getId() == mAmountToConvertEntryField.getId()) {
+                    //Make the cursor visible
+                    mAmountToConvertEntryField.setCursorVisible(true);
+                }
+            }
+        });
+        Log.v(LOG_TAG, "Listener set on EditText");
+
         //Set a listener on the done button on the keyboard
         mAmountToConvertEntryField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -75,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                     //Run the calculations process
                     Log.v(LOG_TAG, "Done button click was registered");
                     onConvertClick();
+
+                    //Hide the cursor
+                    mAmountToConvertEntryField.setCursorVisible(false);
                 }
                 return false;
             }
@@ -99,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void onConvertClick() {
         Log.d(LOG_TAG, "onConvertClick - called");
+        //Hide the cursor
+        mAmountToConvertEntryField.setCursorVisible(false);
+
         //Get the country code of the currently selected spinner option
         String currentCountryCode = getSpinnerOption();
 
@@ -279,6 +296,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Reset the values in the results field
         mConversionResultField.setText(getCurrencySymbol(getSpinnerOption()));
+
+        //Hide the cursor
+        mAmountToConvertEntryField.setCursorVisible(false);
     }
 
     /**
