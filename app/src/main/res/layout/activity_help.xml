@@ -52,7 +52,6 @@ scrolling capabilities if the contents overflow the screen.-->
             android:text="@string/heading_useOfApp" />
 
         <!--Second content-->
-        <!--TODO: Fill out content based on heading-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

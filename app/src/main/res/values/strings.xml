@@ -13,12 +13,12 @@
     <string name="heading_baseCurrency">GBP £</string>
 
     <!--Page content-->
-    <string name="content_aboutApp">This currency converter app uses the latest exchange rates provided by the European Central Bank, which are updated at around 15:00 GMT every day, excluding weekends and select holidays throughout the year. Currently, the app is using exchange rates from:</string>
-    <string name="content_directionsOfUse">[What the symbols on the action bar do, brief summary of how to use the app]</string>
+    <string name="content_aboutApp">This currency converter app uses the latest exchange rates provided by the European Central Bank, which are updated at around 15:00 GMT every day, excluding weekends and select holidays throughout the year.\nCurrently, the app is using exchange rates from:</string>
+    <string name="content_directionsOfUse">To use the converter, simply tap on the user-entry field on the main page and enter an amount to convert in British Pounds.\nThen select a currency to convert to from the drop-down list and press the Convert button.\nTo reset the app ready for another conversion, select the Clear Results icon at the top, next to the help button.\nTo retrieve the latest exchange rates, go to the overflow menu and select Update Exchange Rates. </string>
     <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g> <xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 
     <!--Actions, button & prompt labels-->
-    <string name="action_refresh">Update Conversion Rates</string>
+    <string name="action_refresh">Update Exchange Rates</string>
     <!--<string name="action_navigate">Saved conversions</string>-->
     <string name="action_help">Help &amp; about</string>
     <string name="action_resetContent">Clear Results</string>
