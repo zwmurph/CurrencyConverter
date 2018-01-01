@@ -13,7 +13,7 @@
     <string name="heading_baseCurrency">GBP £</string>
 
     <!--Page content-->
-    <string name="content_aboutApp">[Content about the app, where the data comes from and how often the conversion rates are updated]</string>
+    <string name="content_aboutApp">This currency converter app uses the latest exchange rates provided by the European Central Bank, which are updated at around 15:00 GMT every day, excluding weekends and select holidays throughout the year. Currently, the app is using exchange rates from:</string>
     <string name="content_directionsOfUse">[What the symbols on the action bar do, brief summary of how to use the app]</string>
     <string name="content_convertedValueText"><xliff:g example="£" id="relevantCurrencySymbol">%s</xliff:g> <xliff:g example="1" id="exChangedValue">%f</xliff:g></string>
 

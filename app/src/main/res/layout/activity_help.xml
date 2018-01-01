@@ -25,18 +25,30 @@ scrolling capabilities if the contents overflow the screen.-->
             android:text="@string/heading_aboutApp" />
 
         <!--First content-->
-        <!--TODO: Fill out content based on heading-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/content_aboutApp" />
+            android:text="@string/content_aboutApp"/>
+
+        <!--Date of exchange rates being used-->
+        <TextView
+            android:id="@+id/exchangeRateDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/divider" />
 
         <!--Second heading-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/heading_useOfApp" />
 
         <!--Second content-->
