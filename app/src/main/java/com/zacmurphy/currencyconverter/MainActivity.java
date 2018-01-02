@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Set the text based on the value being input
         if (exchangedValue == 0.0) {
-            mConversionResultField.setText(getCurrencySymbol(getSpinnerOption()));
+            mConversionResultField.setText(relevantCurrencySymbol);
         } else {
             mConversionResultField.setText(getString(R.string.content_convertedValueText, relevantCurrencySymbol, exchangedValue));
         }
