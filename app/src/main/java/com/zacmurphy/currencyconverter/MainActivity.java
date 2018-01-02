@@ -188,7 +188,13 @@ public class MainActivity extends AppCompatActivity {
         if (userEnteredQuantity.isEmpty()) {
             valueToConvert = 0;
         } else {
-            valueToConvert = Double.parseDouble(userEnteredQuantity);
+            if (userEnteredQuantity.equals(".")) {
+                valueToConvert = 0;
+                //Notify the user of their error
+                mAmountToConvertEntryField.setError(getString(R.string.error_invalidChar));
+            } else {
+                valueToConvert = Double.parseDouble(userEnteredQuantity);
+            }
         }
         Log.v(LOG_TAG, "valueToConvert: " + valueToConvert);
 
