@@ -21,22 +21,18 @@ import static com.zacmurphy.currencyconverter.Currency.currenciesList;
 
 public class LoadingActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Currency>> {
 
-    //Tag for the log messages
-    private static final String LOG_TAG = LoadingActivity.class.getSimpleName();
-
     //URL that retrieves the JSON response from the API
     public static final String REQUEST_URL = "https://api.fixer.io/latest?base=GBP";
+    //Tag for the log messages
+    private static final String LOG_TAG = LoadingActivity.class.getSimpleName();
     //https://api.fixer.io/latest?base=GBP
     //https://api.fixer.io/latest?symbols=USD,GBP
-
-    //Global instance of the ProgressBar, so it can be used in multiple methods in this class
-    private ProgressBar mProgressBar;
-
-    //Global instance of the information TextView
-    private TextView mInfoView;
-
     //Constant value for the currency loader ID. This is only really used if you're using multiple loaders.
     private static final int CURRENCY_LOADER_ID = 1;
+    //Global instance of the ProgressBar, so it can be used in multiple methods in this class
+    private ProgressBar mProgressBar;
+    //Global instance of the information TextView
+    private TextView mInfoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +55,9 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
 
             //Let the user know there is no connection
             mInfoView.setText(getResources().getText(R.string.error_noConnectivity));
+
+            //Show the system UI
+            showSystemUI();
         } else {
             Log.v(LOG_TAG, "Internet connection established");
 
@@ -123,6 +122,9 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
         Log.d(LOG_TAG, "Error occurred?: " + QueryUtils.ERROR_OCCURRED);
         if (QueryUtils.ERROR_OCCURRED) {
             mInfoView.setText(getResources().getText(R.string.error_dataLoading));
+
+            //Show the system UI
+            showSystemUI();
         } else {
             mInfoView.setText(getResources().getText(R.string.message_dataLoaded));
             //Switch to the next activity
@@ -146,23 +148,23 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     }
 
     /**
-     * Sub-class that sorts the ArrayList into the order specified by the item's priority,
-     * when the items have the same priority, they are left in alphabetical order by country code
-     */
-    private class CurrencyComparator implements Comparator<Currency> {
-        public int compare(Currency left, Currency right){
-            Log.d(LOG_TAG, "compare class - called");
-            return Integer.compare(left.getPriority(), right.getPriority());
-        }
-    }
-
-    /**
      * If the Loader is reset (i.e. through orientation change), handle that in this method
      * The {@param loader} to be used
      */
     @Override
     public void onLoaderReset(Loader<List<Currency>> loader) {
         Log.d(LOG_TAG, "onLoaderReset() - called");
+    }
+
+    /**
+     * Sub-class that sorts the ArrayList into the order specified by the item's priority,
+     * when the items have the same priority, they are left in alphabetical order by country code
+     */
+    private class CurrencyComparator implements Comparator<Currency> {
+        public int compare(Currency left, Currency right) {
+            Log.d(LOG_TAG, "compare class - called");
+            return Integer.compare(left.getPriority(), right.getPriority());
+        }
     }
 
     /**
@@ -180,5 +182,18 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                         | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
+
+    /**
+     * Method that shows all system UI, returning the activity from fullscreen
+     * Uses code sample from the Android Dev. documentation
+     */
+    private void showSystemUI() {
+        // This snippet shows the system bars. It does this by removing all the flags
+        // except for the ones that make the content appear under the system bars.
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 }
