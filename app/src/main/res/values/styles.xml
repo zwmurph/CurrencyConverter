@@ -61,7 +61,7 @@
 
     <!--Button text style-->
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/colorLight</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
