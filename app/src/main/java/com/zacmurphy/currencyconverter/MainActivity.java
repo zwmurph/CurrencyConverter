@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The method that creates the spinner options
      */
-    public void createSpinnerOptions() {
+    private void createSpinnerOptions() {
         Log.d(LOG_TAG, "createSpinnerOptions - called");
         //Create an ArrayAdapter based on the CurrencyAdapter using the list of currencies
-        ArrayAdapter adapter = new CurrencyAdapter(this, currenciesList);
+        ArrayAdapter adapter = new CurrencyAdapter(this);
 
         //Apply the adapter to the spinner
         mSpinner.setAdapter(adapter);

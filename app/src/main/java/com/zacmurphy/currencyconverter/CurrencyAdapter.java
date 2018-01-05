@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 class CurrencyAdapter extends ArrayAdapter<Currency> {
 
     //Tag for the log messages
@@ -21,15 +19,14 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
     /**
      * A custom constructor.
      *
-     * @param context    is used to inflate the layout file
-     * @param currencies is the data we want to populate into the lists
+     * @param context is used to inflate the layout file
      */
-    CurrencyAdapter(Activity context, List<Currency> currencies) {
+    CurrencyAdapter(Activity context) {
         // This initialises the ArrayAdapter's internal storage for the context and the list.
         // The second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for four TextViews the adapter is not
         // going to use this second argument, so it can be any value.
-        super(context, 0, currencies);
+        super(context, 0, Currency.currenciesList);
         Log.d(LOG_TAG, "Constructor - called");
     }
 
@@ -57,6 +54,7 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
         ImageView icon = convertView.findViewById(R.id.spinnerDropDownImage);
 
         //Set the correct text to the TextView
+        assert currentExchange != null;
         country.setText(currentExchange.getConvertedCurrency());
 
         //Get the resource ID
@@ -100,6 +98,7 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
         ImageView icon = convertView.findViewById(R.id.spinnerImage);
 
         //Set the correct text to the TextView
+        assert currentExchange != null;
         country.setText(currentExchange.getConvertedCurrency());
 
         //Get the resource ID

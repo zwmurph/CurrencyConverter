@@ -11,15 +11,14 @@ import java.util.List;
  */
 class Currency {
 
+    public static final List<Currency> currenciesList = new ArrayList<>();
     //Tag for the log messages
     private static final String LOG_TAG = Currency.class.getSimpleName();
-    public static List<Currency> currenciesList = new ArrayList<>();
     //Declare private variables
-    private String mDate;
-    private String mBase;
-    private String mCurrencyKey;
-    private double mCurrencyValue;
-    private int mPriority;
+    private final String mDate;
+    private final String mCurrencyKey;
+    private final double mCurrencyValue;
+    private final int mPriority;
 
     /**
      * Create the constructor for this class, a constructor creates an instance of a class
@@ -33,7 +32,7 @@ class Currency {
     public Currency(String date, String base, String currencyKey, double currencyValue, int priority) {
         Log.d(LOG_TAG, "Constructor - called");
         mDate = date;
-        mBase = base;
+        String mBase = base;
         mCurrencyKey = currencyKey;
         mCurrencyValue = currencyValue;
         mPriority = priority;
@@ -46,12 +45,14 @@ class Currency {
         return mDate;
     }
 
-    /**
-     * @return the base currency
-     */
-    public String getBaseCurrency() {
-        return mBase;
-    }
+// --Commented out by Inspection START (05/01/2018 22:02):
+//    /**
+//     * @return the base currency
+//     */
+//    public String getBaseCurrency() {
+//        return mBase;
+//    }
+// --Commented out by Inspection STOP (05/01/2018 22:02)
 
     /**
      * @return the currency that the conversion rate applies to

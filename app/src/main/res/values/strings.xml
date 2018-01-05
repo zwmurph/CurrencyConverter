@@ -67,4 +67,7 @@
     <string name="symbol_TRY">₺</string>
     <string name="symbol_USD">$</string>
     <string name="symbol_ZAR">R</string>
+
+    <string name="accessibility_gbpFlag">GBP Flag</string>
+    <string name="accessibility_flagIcon">Currency flag icon</string>
 </resources>

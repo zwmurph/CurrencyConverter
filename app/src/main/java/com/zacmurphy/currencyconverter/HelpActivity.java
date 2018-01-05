@@ -8,9 +8,6 @@ import static com.zacmurphy.currencyconverter.Currency.currenciesList;
 
 public class HelpActivity extends AppCompatActivity {
 
-    //Tag for the log messages
-    private static final String LOG_TAG = HelpActivity.class.getSimpleName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

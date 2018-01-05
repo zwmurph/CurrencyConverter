@@ -28,7 +28,8 @@ button at the bottom-->
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/flag_gbp" />
+                android:background="@drawable/flag_gbp"
+                android:contentDescription="@string/accessibility_gbpFlag" />
 
             <!--Label for the EditText-->
             <TextView

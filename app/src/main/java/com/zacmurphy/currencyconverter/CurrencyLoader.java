@@ -12,10 +12,10 @@ import java.util.List;
 class CurrencyLoader extends AsyncTaskLoader<List<Currency>> {
 
     //Log tag that returns the package name for errors
-    public static final String LOG_TAG = CurrencyLoader.class.getSimpleName();
+    private static final String LOG_TAG = CurrencyLoader.class.getSimpleName();
 
     //Global instance of the String URL, so it can be used in multiple methods in this class
-    private String mUrl;
+    private final String mUrl;
 
     /**
      * The constructor for this class
