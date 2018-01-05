@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Custom method
+     *
      * @return the currently selected option of the spinner
      */
     private String getSpinnerOption() {
@@ -149,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Custom method that takes in the {@param countryCode}
+     *
      * @return the relevant currency symbol associated with the countryCode
      */
     private String getCurrencySymbol(String countryCode) {
@@ -175,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Custom method, using the exchange rate and user entered value
+     *
      * @return the exchanged value for the user
      */
     private double getExchangedValue() {
@@ -211,8 +214,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Custom method that outputs the result from the conversion
+     *
      * @param relevantCurrencySymbol input of the relevant currency symbol to use
-     * @param exchangedValue input of the exchanged value to show the user
+     * @param exchangedValue         input of the exchanged value to show the user
      */
     private void setResultFieldText(String relevantCurrencySymbol, double exchangedValue) {
         Log.d(LOG_TAG, "setResultFieldText - called");

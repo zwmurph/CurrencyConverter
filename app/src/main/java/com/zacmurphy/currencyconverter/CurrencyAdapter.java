@@ -35,9 +35,10 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
 
     /**
      * Overridden method to produce the contents of the spinner when clicked on
-     * @param position - the specific item in the list
+     *
+     * @param position    - the specific item in the list
      * @param convertView - the view to change
-     * @param parent - the parent activity
+     * @param parent      - the parent activity
      * @return the completed view
      */
     @Override
@@ -76,9 +77,10 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
 
     /**
      * Overridden method to produce the contents of the spinner before it's clicked on
-     * @param position - the specific item in the list
+     *
+     * @param position    - the specific item in the list
      * @param convertView - the view to change
-     * @param parent - the parent activity
+     * @param parent      - the parent activity
      * @return the completed view
      */
     @NonNull
@@ -125,13 +127,4 @@ class CurrencyAdapter extends ArrayAdapter<Currency> {
         //Append the country code to the prefix "flag_" to get the file name, specify the resource type and package name - which return the drawable resource
         return getContext().getResources().getIdentifier("flag_" + countryCode.toLowerCase(), "drawable", getContext().getPackageName());
     }
-
-//    //TODO: Implement this method?:
-//    /**
-//     * @return the country name based on the {@param countryCode}
-//     */
-//    private String getCountryName(String countryCode) {
-//
-//        return x;
-//    }
 }

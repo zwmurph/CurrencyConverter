@@ -157,21 +157,11 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
     }
 
     /**
-     * Sub-class that sorts the ArrayList into the order specified by the item's priority,
-     * when the items have the same priority, they are left in alphabetical order by country code
-     */
-    private class CurrencyComparator implements Comparator<Currency> {
-        public int compare(Currency left, Currency right) {
-            Log.d(LOG_TAG, "compare class - called");
-            return Integer.compare(left.getPriority(), right.getPriority());
-        }
-    }
-
-    /**
      * Method that hides all system UI, making the activity truly fullscreen
      * Uses code sample from the Android Dev. documentation
      */
     private void hideSystemUI() {
+        Log.d(LOG_TAG, "hideSystemUI - called");
         // Set the IMMERSIVE flag.
         // Set the content to appear under the system bars so that the content
         // doesn't resize when the system bars hide and show.
@@ -189,11 +179,23 @@ public class LoadingActivity extends AppCompatActivity implements LoaderManager.
      * Uses code sample from the Android Dev. documentation
      */
     private void showSystemUI() {
+        Log.d(LOG_TAG, "showSystemUI - called");
         // This snippet shows the system bars. It does this by removing all the flags
         // except for the ones that make the content appear under the system bars.
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+
+    /**
+     * Sub-class that sorts the ArrayList into the order specified by the item's priority,
+     * when the items have the same priority, they are left in alphabetical order by country code
+     */
+    private class CurrencyComparator implements Comparator<Currency> {
+        public int compare(Currency left, Currency right) {
+            Log.d(LOG_TAG, "compare class - called");
+            return Integer.compare(left.getPriority(), right.getPriority());
+        }
     }
 }

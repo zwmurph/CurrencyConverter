@@ -13,22 +13,21 @@ class Currency {
 
     //Tag for the log messages
     private static final String LOG_TAG = Currency.class.getSimpleName();
-
+    public static List<Currency> currenciesList = new ArrayList<>();
     //Declare private variables
     private String mDate;
     private String mBase;
     private String mCurrencyKey;
     private double mCurrencyValue;
     private int mPriority;
-    public static List<Currency> currenciesList = new ArrayList<>();
 
     /**
      * Create the constructor for this class, a constructor creates an instance of a class
      * This constructor will create an instance of two Strings and a double
      *
-     * @param date - the date the conversion rates are from
-     * @param base - the base currency
-     * @param currencyKey - the currency being converted to
+     * @param date          - the date the conversion rates are from
+     * @param base          - the base currency
+     * @param currencyKey   - the currency being converted to
      * @param currencyValue - the exchange rate
      */
     public Currency(String date, String base, String currencyKey, double currencyValue, int priority) {

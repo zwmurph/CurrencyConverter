@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--This XML layout file controls the styling for the text once selected from the spinner-->
-<!--Using a TextView works fine for this XML file-->
-<!--Make sure that attribute 'id' is included-->
-<!--Everything else can be customised-->
-<!--Keep height to 'wrap_content' to keep the height defined by the background XML-->
+<?xml version="1.0" encoding="utf-8"?><!--This XML layout file controls the styling for the text once selected from the spinner--><!--Using a TextView works fine for this XML file--><!--Make sure that attribute 'id' is included--><!--Everything else can be customised--><!--Keep height to 'wrap_content' to keep the height defined by the background XML-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -21,12 +16,12 @@
 
     <TextView
         android:id="@+id/spinnerText"
+        style="@style/Content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginLeft="8dp"
         android:textSize="14sp"
-        tools:text="GBP"
-        android:layout_gravity="center"
-        style="@style/Content"/>
+        tools:text="GBP" />
 
 </LinearLayout>

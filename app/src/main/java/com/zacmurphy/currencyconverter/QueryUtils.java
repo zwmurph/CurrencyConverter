@@ -88,7 +88,6 @@ class QueryUtils {
         //Initialise variable
         String jsonResponse = "";
 
-        Log.d(LOG_TAG, "before if statement");
         //If the URL is null, then return early with an empty string
         if (url == null) {
             ERROR_OCCURRED = true;
@@ -96,7 +95,6 @@ class QueryUtils {
             return jsonResponse;
         }
 
-        Log.d(LOG_TAG, "before variables initialised");
         //Initialise variables
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
@@ -227,17 +225,15 @@ class QueryUtils {
             for (int i = 0; i < rates.length(); i++) {
                 //Get the object key (country code)
                 String objectKey = rates.names().getString(i);
-                Log.v(LOG_TAG, "objectKey: " + objectKey);
 
                 //Get the exchange rate value associated with that object
                 double keyValue = rates.getDouble(objectKey);
-                Log.v(LOG_TAG, "keyValue: " + keyValue);
 
                 //Get the priority for each object
                 int priority = getPriority(objectKey);
 
                 //Add those details along with the above date and base to the array
-                Log.d(LOG_TAG, exchangeDate + ", " + baseCurrency + ", " + objectKey + ", " + keyValue + ", " + priority);
+                Log.v(LOG_TAG, exchangeDate + ", " + baseCurrency + ", " + objectKey + ", " + keyValue + ", " + priority);
                 currencies.add(new Currency(exchangeDate, baseCurrency, objectKey, keyValue, priority));
             }
         } catch (JSONException e) {
@@ -251,12 +247,13 @@ class QueryUtils {
     /**
      * Custom method that assigns a priority to a currency based on how used it is worldwide,
      * this I determined using data from the Internet
+     *
      * @param currencyCode, the country to be checked
      * @return the priority level
      */
     private static int getPriority(String currencyCode) {
         Log.d(LOG_TAG, "getPriority - called");
-        switch (currencyCode){
+        switch (currencyCode) {
             case "USD":
                 return 0;
             case "EUR":

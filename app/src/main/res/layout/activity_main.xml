@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--This relative layout allows for the main functions to be at the top and the save conversion
+<?xml version="1.0" encoding="utf-8"?><!--This relative layout allows for the main functions to be at the top and the save conversion
 button at the bottom-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zacmurphy.currencyconverter.MainActivity"
-    android:id="@+id/mainLayout">
+    tools:context="com.zacmurphy.currencyconverter.MainActivity">
 
     <!--This linear layout structures the page contents in a vertical order-->
     <LinearLayout
@@ -28,17 +27,17 @@ button at the bottom-->
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/flag_gbp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:background="@drawable/flag_gbp" />
 
             <!--Label for the EditText-->
             <TextView
+                style="@style/HeadingSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/symbol_GBP"
                 android:layout_marginLeft="8dp"
-                style="@style/HeadingSmall"/>
+                android:gravity="center_vertical"
+                android:text="@string/symbol_GBP" />
 
             <!--The user input field-->
             <EditText
@@ -46,18 +45,18 @@ button at the bottom-->
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
+                android:cursorVisible="false"
                 android:hint="@string/prompt_amountEntry"
-                android:inputType="numberDecimal"
-                android:cursorVisible="false"/>
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <!--Label for the spinner-->
         <TextView
+            style="@style/HeadingSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/heading_currencyToConvert"
-            style="@style/HeadingSmall"/>
+            android:text="@string/heading_currencyToConvert" />
 
         <!--The spinner requires a frame, so that a style can be applied to it-->
         <FrameLayout
@@ -82,35 +81,35 @@ button at the bottom-->
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:text="@string/button_convert"
-            android:theme="@style/AppTheme.Button"/>
+            android:theme="@style/AppTheme.Button" />
 
         <!--Heading for the amount converted text-->
         <TextView
+            style="@style/HeadingSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/heading_amountConverted"
-            style="@style/HeadingSmall"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/heading_amountConverted" />
 
         <!--Text-box that displays converted amount-->
         <TextView
             android:id="@+id/conversionResultField"
+            style="@style/ContentLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/symbol_GBP"
-            style="@style/ContentLarge"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/symbol_GBP" />
     </LinearLayout>
 
     <!--Save the current conversion button-->
     <!--<Button-->
-        <!--android:id="@+id/button_saveConversion"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginBottom="16dp"-->
-        <!--android:text="@string/button_saveConversion" />-->
+    <!--android:id="@+id/button_saveConversion"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_marginBottom="16dp"-->
+    <!--android:text="@string/button_saveConversion" />-->
 </RelativeLayout>

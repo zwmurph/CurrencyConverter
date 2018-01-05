@@ -15,19 +15,19 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <!-- <activity -->
         <!-- android:name=".SecondActivity" -->
         <!-- android:label="@string/page_2" -->
         <!-- android:parentActivityName=".MainActivity" /> -->
         <activity
             android:name=".HelpActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/page_3"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoadingActivity"
             android:theme="@style/FullScreen">
